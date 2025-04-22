@@ -1,0 +1,36 @@
+---
+- name: Install Python 3 on Amazon Linux 2
+  hosts: all
+  become: true
+  gather_facts: true  
+
+  tasks:
+    - name: Update all packages (yum)
+      yum:
+        name: '*'
+        state: latest
+        update_cache: yes
+
+    - name: Install Python 3 and pip
+      yum:
+        name:
+          - python3
+        state: present
+
+    - name: Install java17
+      yum:
+        name:
+          - java-17-amazon-corretto
+        state: present
+
+    - name: Install docker
+      yum:
+        name:
+          - docker
+        state: present
+
+
+
+
+
+
